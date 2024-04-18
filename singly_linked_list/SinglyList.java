@@ -37,6 +37,40 @@ public class SinglyList {
         return nodeCount;
     }
 
+    int get_node_at_index(int index){
+        this.current = this.head;
+        while(this.current != null && index-- != 0){
+            this.current = this.current.next;
+        }
+        if (this.current != null){
+            return this.current.value;
+        }
+        throw new NullPointerException("No node at this index");
+    }
+
+    int sum_all(){
+        int sum = 0;
+        this.current = this.head;
+        while(this.current != null){
+            sum += this.current.value;
+        }
+        return sum;
+    }
+
+    void reverse_list(){
+        Node temp = null;
+        Node prev = null;
+        this.current = this.head;
+
+        while(this.current != null){
+            temp = this.current.next;
+            this.current.next = prev;
+            prev = this.current;
+            this.current = temp;
+        }
+        this.head = prev;
+    }
+
     void print_list(){
         System.out.println("This list contains the following values: ");
         this.current = this.head;
