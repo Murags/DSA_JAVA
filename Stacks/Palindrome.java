@@ -1,11 +1,5 @@
 // find out if String is palindrome. Note Bug: Does not work for sentences
 public class Palindrome{
-    public static void main(String[] args){
-        String str1 = "Madam";
-        isPalindrome(str1);
-        String str2 = "dog";
-        isPalindrome(str2);
-    }
 
     public static boolean isPalindrome(String str){
         StackS reverse = new StackS(str.length());
