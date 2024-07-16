@@ -1,15 +1,7 @@
 public class Queue {
-    private int maxSize;
-    private long[] queArray;
-    private int front, rear, nItems;
-
-    public static void main(String[] args){
-        Queue myQ = new Queue(7);
-        for (int i = 1; i <= 7; i++){
-            myQ.insert(i);
-        }
-        System.out.println(myQ.remove());
-    }
+    public int maxSize;
+    public long[] queArray;
+    int front, rear, nItems;
 
     public Queue(int s) {
         maxSize = s;
@@ -20,13 +12,22 @@ public class Queue {
     }
 
     public void insert(long j) {
+        if (isFull()) {
+            System.out.println("Queue is full. Cannot insert " + j);
+            return;
+        }
         if (rear == maxSize - 1)
             rear = -1;
         queArray[++rear] = j;
         nItems++;
+        System.out.println("Inserted " + j + " at position " + rear);
     }
 
     public long remove() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. Cannot remove.");
+            return -1;
+        }
         long temp = queArray[front++];
         if (front == maxSize)
             front = 0;
